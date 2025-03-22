@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  web:
+    build: .  # Используем Dockerfile из текущей папки
+    ports:
+      - "8081:80"
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - lamp-network
+
+  # База данных MySQL
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass  # пароль для root-пользователя
+      MYSQL_DATABASE: appdb          # создаем базу данных
+      MYSQL_USER: user                # создаем пользователя
+      MYSQL_PASSWORD: userpass
+    volumes:
+      - mysql-data:/var/lib/mysql  # сохраняем данные БД
+    networks:
+      - lamp-network
+
+  # phpMyAdmin для управления БД
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db  # имя сервиса MySQL из docker-compose.yml
+    depends_on:
+      - db
+    networks:
+      - lamp-network
+
+# Настройка сети и тома
+networks:
+  lamp-network:
+    driver: bridge
+
+volumes:
+  mysql-data:  # том для данных MySQL
