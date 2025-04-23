@@ -1,4 +1,4 @@
-from geometric_lib import circle, rectangle
+from geometric_lib import circle
 
 radius = 5
 print(f"Площадь круга: {circle.area(radius)}")

@@ -1,4 +1,14 @@
 FROM python:3.9-slim
-RUN pip install geometric-lib
+
+RUN apt-get update && apt-get install -y git
+
+RUN git clone https://github.com/smartiqaorg/geometric_lib.git
+
+RUN mkdir -p /geometric_lib/geometric_lib \
+    && mv /geometric_lib/*.py /geometric_lib/geometric_lib/ \
+    && touch /geometric_lib/geometric_lib/__init__.py
+
+ENV PYTHONPATH="/geometric_lib"
+
 COPY main.py /app/main.py
 CMD ["python", "/app/main.py"]
