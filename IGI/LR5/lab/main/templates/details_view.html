@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ article.title }} 
+{% endblock %}
+
+{% block content %}
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.full_text }}</p> 
+    {% if article.image %}
+        <img src="{{ article.image.url }}" width="300" height="200" style="object-fit: cover;"></br>            
+    {% endif %}    
+    <a href="{% url 'news-delete' article.id %}" class="btn">Удалить</a>
+    <a href="{% url 'news-update' article.id %}" class="btn">Изменить</a>    
+{% endblock %}

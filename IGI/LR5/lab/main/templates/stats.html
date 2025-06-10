@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Статистика</h2>
+
+<h3>Возраст пользователей</h3>
+<p><strong>Average age:</strong> {{ age_context.average_age|floatformat:2 }}</p>
+<p><strong>Median age:</strong> {{ age_context.median_age }}</p>
+<img src="data:image/png;base64,{{ age_context.chart }}" style="max-width: 100%; height: auto;">
+
+{% endblock %}

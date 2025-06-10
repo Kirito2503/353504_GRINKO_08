@@ -1,0 +1,13 @@
+{% block title %}
+    Вопросы и ответы
+{% endblock %}
+
+{% block content %}
+    <h1>Вопросы и ответы</h1> 
+    {% for el in Qaas %}
+        <div>
+            <h3>{{ el.quation }}</h3>
+            <p>{{ el.answer }}</p>
+        </div>
+    {% endfor %}    
+{% endblock %}

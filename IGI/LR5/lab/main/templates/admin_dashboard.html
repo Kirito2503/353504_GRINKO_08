@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends 'layout.html' %}
+<body>
+    <header>
+
+    </header>
+
+    <main class="container my-4">
+        {% block content %}
+        <a href='stats'>Статистика</a>
+        <div style="display: flex; gap: 500px;">
+            <div>
+            <h1>Список животных</h1>
+                {% for el in animal %}
+                    <div>
+                        <h3>{{ el.species }}</h3>
+                        <p>{{ el.number }} особей</p>
+                        <p>{{ el.house }}</p>
+                    </div></br>
+                {% endfor %}
+            </div>
+            <div>       
+            <h1>Констакты</h1>
+                {% for el in staf %} 
+                    <div class="section">
+                        <h3>Контактные данные:</h3>
+                        <p><strong>Имя:</strong> {{ el.user.first_name }}</p>
+                        <p><strong>Фамилия:</strong> {{ el.user.last_name }}</p>
+                        <p><strong>Телефон:</strong> {{ el.phone_number }}</p>
+                        <p><strong>Дата рождения:</strong> {{ el.birth_date|date:"d.m.Y" }}</p>
+                    </div></br>
+                {% endfor %}                      
+            </div>        
+        </div>    
+        {% endblock %}
+    </main>
+
+    <footer>
+    </footer>
+</body>
+</html>
