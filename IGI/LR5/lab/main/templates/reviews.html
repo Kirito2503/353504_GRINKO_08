@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Отзывы
+{% endblock %}
+
+{% block content %}
+    <h1>Отзывы о зоопарке</h1> 
+    {% for el in reviews %}
+        <div>
+            <p>{{ el.review }}</p>
+            <p>{{ el.mark }}</p></br>
+        </div>
+    {% endfor %}
+
+    <a href="create_reviews">Добавить</a>    
+{% endblock %}

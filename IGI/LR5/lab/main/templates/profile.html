@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{% csrf_token %}
+<div class="profile-container">
+    <h2>Профиль пользователя: {{ staf }}</h2>
+
+    <div class="section">
+        <h3>Контактные данные:</h3>
+        <p><strong>Телефон:</strong> {{ staf.phone_number }}</p>
+        <p><strong>Дата рождения:</strong> {{ staf.birth_date|date:"d.m.Y" }}</p>
+        <p><strong>Email:</strong> {{ staf.user.email }}</p>
+        <p><strong>За кем закреплён:</strong> {{ staf.animal }}</p>
+    </div>
+{% endblock %}

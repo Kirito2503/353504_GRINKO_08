@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Скидки и купоны!
+{% endblock %}
+
+{% block content %}
+    <h1>Информация о скидках</h1></br>
+    {% for el in sales %}
+        <div>
+            <h2><strong>{{ el.title }}</strong></h2>
+            <p>Скидка {{ el.sale }}%</p>
+            <p>Действует до {{ el.time|date:"d.m.Y" }}</p>
+            <a href="bySale">Купить билет по скидке</a>  
+        </div></br>  
+ 
+    {% endfor %}
+{% endblock %}

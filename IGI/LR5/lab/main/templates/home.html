@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Домашняя страница
+{% endblock %}
+
+{% block content %}
+    <h3>{{ news.title }}</h3>
+    <p>{{ news.anons }}</p>
+    {% if news.image %}    
+        <img src="{{ news.image.url }}" width="300" height="200" style="object-fit: cover;"></br>            
+    {% endif %}
+    <a href={% url 'news-detail' news.id %}>Читать подробнее</a> 
+    <pre>{{cal}}</pre>
+{% endblock %}

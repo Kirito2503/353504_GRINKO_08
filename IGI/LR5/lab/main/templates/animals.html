@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+    Животные зоопарка
+{% endblock %}
+
+{% block content %}
+    <h1>Список животных</h1>
+    {% for el in animal %}
+        <div>
+            <h3>{{ el.species }}</h3>
+            <p>{{ el.number }} особей</p>
+            <p>{{ el.house }}</p>
+            <img src="{{ el.image.url }}" width="300" height="200" style="object-fit: cover;">
+        </div></br>
+    {% endfor %}     
+{% endblock %}

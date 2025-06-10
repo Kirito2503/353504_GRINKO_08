@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Новости
+{% endblock %}
+
+{% block content %}
+    <h1>Новости</h1> 
+    {% for el in news %}
+        <div>
+            <h3>{{ el.title }}</h3>
+            <p>{{ el.anons }}</p>
+            {% if el.image %}
+            <img src="{{ el.image.url }}" width="300" height="200" style="object-fit: cover;"></br>            
+            {% endif %}
+            <a href={% url 'news-detail' el.id %}>Читать подробнее</a>
+        </div>
+    {% endfor %}
+    {% if user.is_staff %}
+    <a href="create_news">Добавить</a>
+    {% endif %}
+{% endblock %}
